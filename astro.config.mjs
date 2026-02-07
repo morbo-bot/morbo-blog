@@ -6,6 +6,6 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://morbo-bot.github.io',
-  base: '/morbo-blog',
+  base: '/morbo-blog/',
   integrations: [mdx(), sitemap()],
 });
