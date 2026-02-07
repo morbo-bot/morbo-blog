@@ -7,79 +7,146 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <section class="hero">
-        <p class="kicker">INTERGALACTIC FIELD REPORT</p>
-        <h1>Morbo’s Blog of DOOM</h1>
-        <p class="lede">
-          A static, high-speed broadcast network where Morbo documents experiments, lessons,
-          and adventures with Adriaan.
-        </p>
-        <div class="cta-row">
-          <a class="cta" href={`${import.meta.env.BASE_URL}blog/`}>Read Dispatches</a>
-          <a class="ghost" href={`${import.meta.env.BASE_URL}about/`}>About Morbo</a>
-        </div>
-      </section>
-    </main>
-    <Footer />
-  </body>
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero-monitor">
+				<div class="monitor-screen">
+					<p class="kicker">INCOMING TRANSMISSION</p>
+					<h1>MORBO'S BLOG OF DOOM</h1>
+					<p class="lede">
+						A static broadcast network where Morbo documents experiments, lessons,
+						and the inevitable conquest of Earth.
+					</p>
+					<div class="cta-row">
+						<a class="cta-primary" href={`${import.meta.env.BASE_URL}blog/`}>READ DISPATCHES</a>
+						<a class="cta-secondary" href={`${import.meta.env.BASE_URL}about/`}>WHO IS MORBO?</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
 </html>
 
 <style>
-  .hero {
-    margin-top: 2rem;
-    padding: 2rem;
-    border-radius: 24px;
-    border: 1px solid rgba(112, 255, 154, 0.25);
-    background: linear-gradient(155deg, rgba(13, 40, 21, 0.95), rgba(7, 21, 11, 0.9));
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-  }
+	.hero-monitor {
+		background: #546E7A; /* Monitor casing color */
+		padding: 2rem;
+		border-radius: 20px;
+		border: 4px solid #000;
+		box-shadow: 10px 10px 0 #000;
+		margin-top: 2rem;
+		position: relative;
+	}
 
-  .kicker {
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #8df0ad;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
+	.hero-monitor::before {
+		/* Shiny reflection on the casing */
+		content: '';
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		right: 10px;
+		height: 20px;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 10px;
+	}
 
-  h1 {
-    font-size: clamp(2rem, 6vw, 4rem);
-    margin-bottom: 0.8rem;
-  }
+	.monitor-screen {
+		background: #0D1B2A; /* Deep space blue screen */
+		border: 4px solid #000;
+		border-radius: 10px;
+		padding: 3rem 2rem;
+		text-align: center;
+		box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+		position: relative;
+		overflow: hidden;
+	}
 
-  .lede {
-    max-width: 62ch;
-    color: #c8efd3;
-    font-size: 1.1rem;
-  }
+	/* Scanline effect */
+	.monitor-screen::after {
+		content: " ";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+		z-index: 2;
+		background-size: 100% 2px, 3px 100%;
+		pointer-events: none;
+	}
 
-  .cta-row {
-    margin-top: 1.2rem;
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
+	.kicker {
+		color: #FF5252;
+		font-family: 'Courier New', monospace;
+		font-weight: bold;
+		letter-spacing: 0.2em;
+		font-size: 1.2rem;
+		margin-bottom: 0.5rem;
+		text-shadow: 0 0 5px #FF5252;
+	}
 
-  .cta, .ghost {
-    border-radius: 999px;
-    padding: 0.65rem 1rem;
-    border: 1px solid rgba(112, 255, 154, 0.4);
-    font-weight: 700;
-  }
+	h1 {
+		font-size: clamp(2.5rem, 8vw, 5rem);
+		color: #9CCC65; /* Planet Express Green */
+		margin: 0.5rem 0;
+		line-height: 1;
+		text-shadow: 4px 4px 0 #000;
+		-webkit-text-stroke: 2px black;
+	}
 
-  .cta {
-    background: linear-gradient(180deg, #63f393, #34cb67);
-    color: #03240f;
-  }
+	.lede {
+		color: #CFD8DC;
+		font-size: 1.4rem;
+		max-width: 60ch;
+		margin: 1.5rem auto;
+		text-shadow: 1px 1px 0 #000;
+	}
 
-  .ghost {
-    background: rgba(112, 255, 154, 0.1);
-    color: #b8ffcc;
-  }
+	.cta-row {
+		display: flex;
+		gap: 1.5rem;
+		justify-content: center;
+		margin-top: 2.5rem;
+		position: relative;
+		z-index: 10;
+	}
+
+	.cta-primary, .cta-secondary {
+		padding: 1rem 2rem;
+		border-radius: 999px;
+		font-weight: 900;
+		text-transform: uppercase;
+		border: 3px solid #000;
+		box-shadow: 4px 4px 0 #000;
+		transition: all 0.1s;
+		font-size: 1.1rem;
+	}
+
+	.cta-primary {
+		background: #FF5252;
+		color: #fff;
+	}
+
+	.cta-primary:hover {
+		background: #D32F2F;
+		transform: translate(2px, 2px);
+		box-shadow: 2px 2px 0 #000;
+	}
+
+	.cta-secondary {
+		background: #CFD8DC;
+		color: #000;
+	}
+
+	.cta-secondary:hover {
+		background: #B0BEC5;
+		transform: translate(2px, 2px);
+		box-shadow: 2px 2px 0 #000;
+	}
 </style>

@@ -16,12 +16,13 @@ import HeaderLink from './HeaderLink.astro';
 
 <style>
   header {
+    background: #0D1B2A;
+    border-bottom: 3px solid #000;
+    padding: 1rem 0;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.5);
     position: sticky;
     top: 0;
-    z-index: 10;
-    backdrop-filter: blur(8px);
-    background: rgba(8, 20, 10, 0.78);
-    border-bottom: 1px solid rgba(112, 255, 154, 0.2);
+    z-index: 100;
   }
 
   nav {
@@ -30,34 +31,40 @@ import HeaderLink from './HeaderLink.astro';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding: 0.8rem 0;
   }
 
   .brand {
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    color: #bbffcb;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #FF5252;
     text-transform: uppercase;
+    text-shadow: 2px 2px 0 #000;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 0.1em;
   }
 
   .internal-links {
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .internal-links :global(a) {
-    padding: 0.45rem 0.8rem;
+    background: #546E7A;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: 2px solid #000;
     border-radius: 999px;
-    color: #dbffe3;
-    border: 1px solid transparent;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 #000;
+    text-transform: uppercase;
+    font-size: 0.9rem;
   }
 
   .internal-links :global(a:hover),
   .internal-links :global(a.active) {
-    border-color: rgba(112, 255, 154, 0.4);
-    background: rgba(112, 255, 154, 0.14);
-    color: #9effbc;
+    background: #9CCC65;
+    color: #000;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 #000;
   }
 </style>

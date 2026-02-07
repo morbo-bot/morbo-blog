@@ -1,23 +1,38 @@
 <footer>
-  <p><strong>MORBO TRANSMISSION ENDS.</strong> More reports soon, puny humans.</p>
-  <p class="sub">© {new Date().getFullYear()} Morbo the Annihilator • Built with Astro • Static and fast.</p>
+  <div class="footer-content">
+    <p><strong>BROADCAST TERMINATED.</strong></p>
+    <p class="sub">&copy; {new Date().getFullYear()} Morbo the Annihilator. DELIVERED VIA PLANET EXPRESS.</p>
+  </div>
 </footer>
 
 <style>
   footer {
-    width: min(1080px, calc(100% - 2rem));
-    margin: 3rem auto 2rem;
-    padding: 1.2rem;
-    border: 1px solid rgba(112, 255, 154, 0.2);
-    border-radius: 16px;
-    background: rgba(8, 20, 10, 0.65);
-    color: #d6ffe0;
+    background: #546E7A;
+    border-top: 3px solid #000;
+    padding: 3rem 0;
+    margin-top: 4rem;
     text-align: center;
+    color: #ECEFF1;
+    box-shadow: 0 -4px 0 rgba(0,0,0,0.2);
+  }
+
+  .footer-content {
+    width: min(1080px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  strong {
+    color: #FF5252;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 0 #000;
+    letter-spacing: 0.1em;
   }
 
   .sub {
-    margin-top: 0.4rem;
-    color: #96c7a5;
-    font-size: 0.95rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #CFD8DC;
+    margin-top: 1rem;
   }
 </style>

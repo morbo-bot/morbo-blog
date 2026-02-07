@@ -1,26 +1,60 @@
 :root {
-  --bg: #06150a;
-  --bg-soft: #0b2011;
-  --text: #e8ffee;
-  --muted: #9ac9ab;
-  --neon: #70ff9a;
-  --neon-2: #37d16c;
-  --card: rgba(9, 26, 13, 0.72);
-  --border: rgba(112, 255, 154, 0.22);
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  /* Planet Express Ship Colors */
+  --pex-green-light: #C5E1A5;
+  --pex-green-main: #9CCC65;
+  --pex-green-dark: #558B2F;
+  
+  /* Zoidberg / Fry Red */
+  --accent-red: #D32F2F;
+  --accent-red-bright: #FF5252;
+  
+  /* Bender Gray */
+  --metal-gray: #CFD8DC;
+  --metal-dark: #546E7A;
+  
+  /* Space Backgrounds */
+  --space-black: #050505;
+  --space-blue: #0D1B2A;
+  
+  /* Text */
+  --text-main: #ECEFF1;
+  --text-muted: #B0BEC5;
+  
+  /* UI Elements */
+  --border-thick: 3px solid #000;
+  --box-shadow: 4px 4px 0px #000;
+}
+
+@font-face {
+  font-family: 'League Spartan';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/leaguespartan/v11/kJEnBuEW6r0llMcYAqMI5zaD.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'League Spartan';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/leaguespartan/v11/kJEnBuEW6r0llMcYAqMI5zaD.woff2) format('woff2'); /* Simplified for CSS variable usage, in real prod use actual weight URL */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 * { box-sizing: border-box; }
 
 body {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-family: 'League Spartan', 'Futura', sans-serif;
   margin: 0;
-  color: var(--text);
-  background:
-    radial-gradient(circle at 10% -10%, rgba(62, 189, 96, 0.25), transparent 40%),
-    radial-gradient(circle at 90% -20%, rgba(112, 255, 154, 0.18), transparent 40%),
-    linear-gradient(180deg, #07180b, #041108 30%, #030d06 100%);
-  line-height: 1.7;
+  background-color: var(--space-blue);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 400px 400px;
+  color: var(--text-main);
+  line-height: 1.6;
 }
 
 main {
@@ -30,42 +64,61 @@ main {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #cbffd9;
-  line-height: 1.2;
-  margin: 0 0 0.75rem;
+  color: var(--pex-green-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0px #000;
+  margin-bottom: 0.5em;
+  font-weight: 800;
 }
 
+h1 { font-size: 3.5rem; color: var(--accent-red-bright); -webkit-text-stroke: 1px black; }
+
 a {
-  color: var(--neon);
+  color: var(--pex-green-light);
   text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
 }
 
 a:hover {
-  color: #b8ffc9;
+  color: #fff;
+  border-bottom-color: var(--accent-red);
 }
-
-p { margin: 0 0 1rem; }
 
 img {
   max-width: 100%;
-  border-radius: 14px;
+  border: var(--border-thick);
+  box-shadow: var(--box-shadow);
+  border-radius: 12px;
+}
+
+/* Card Style for Blog Posts */
+.card {
+  background: var(--metal-dark);
+  border: var(--border-thick);
+  box-shadow: var(--box-shadow);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+  background: #607D8B;
 }
 
 code {
-  background: rgba(119, 255, 165, 0.14);
-  border: 1px solid rgba(119, 255, 165, 0.24);
-  border-radius: 6px;
-  padding: 0.1rem 0.35rem;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 1.2rem 0;
+  font-family: 'Courier New', monospace;
+  background: #000;
+  color: var(--pex-green-main);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
 }
 
 .sr-only {
-  position: absolute !important;
+  position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
