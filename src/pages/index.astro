@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import morboDeskImage from '../assets/morbo-news-desk-final.png';
 ---
 
 <!doctype html>
@@ -13,18 +14,22 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<section class="hero-monitor">
-				<div class="monitor-screen">
-					<p class="kicker">INCOMING TRANSMISSION</p>
-					<h1>MORBO'S BLOG OF DOOM</h1>
+			<section class="hero">
+				<div class="sky-glow"></div>
+				<div class="hero-copy">
+					<p class="eyebrow">LIVE FROM THE 31ST CENTURY</p>
+					<h1>MORBO'S FUTURE NEWSROOM</h1>
 					<p class="lede">
-						A static broadcast network where Morbo documents experiments, lessons,
-						and the inevitable conquest of Earth.
+						Broadcast-grade doom reports with loud headlines, neon skies, and retro sci‑fi attitude.
 					</p>
 					<div class="cta-row">
-						<a class="cta-primary" href={`${import.meta.env.BASE_URL}blog/`}>READ DISPATCHES</a>
-						<a class="cta-secondary" href={`${import.meta.env.BASE_URL}about/`}>WHO IS MORBO?</a>
+						<a class="cta primary" href={`${import.meta.env.BASE_URL}blog/`}>Read Dispatches</a>
+						<a class="cta" href={`${import.meta.env.BASE_URL}about/`}>Meet Morbo</a>
 					</div>
+				</div>
+
+				<div class="hero-art">
+					<img src={morboDeskImage.src} alt="Morbo at the intergalactic news desk" loading="eager" />
 				</div>
 			</section>
 		</main>
@@ -33,120 +38,133 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 </html>
 
 <style>
-	.hero-monitor {
-		background: #546E7A; /* Monitor casing color */
-		padding: 2rem;
-		border-radius: 20px;
-		border: 4px solid #000;
-		box-shadow: 10px 10px 0 #000;
-		margin-top: 2rem;
+	.hero {
 		position: relative;
-	}
-
-	.hero-monitor::before {
-		/* Shiny reflection on the casing */
-		content: '';
-		position: absolute;
-		top: 10px;
-		left: 10px;
-		right: 10px;
-		height: 20px;
-		background: rgba(255, 255, 255, 0.1);
-		border-radius: 10px;
-	}
-
-	.monitor-screen {
-		background: #0D1B2A; /* Deep space blue screen */
-		border: 4px solid #000;
-		border-radius: 10px;
-		padding: 3rem 2rem;
-		text-align: center;
-		box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
-		position: relative;
+		display: grid;
+		grid-template-columns: 1.05fr 0.95fr;
+		gap: clamp(1rem, 3vw, 2rem);
+		align-items: stretch;
+		padding: clamp(1rem, 2.4vw, 1.8rem);
+		border: var(--b3);
+		border-radius: 24px;
+		background: linear-gradient(180deg, var(--sky-top) 0 35%, var(--sky-mid) 35% 74%, var(--sky-bottom) 74% 100%);
+		box-shadow: var(--shadow-hard);
 		overflow: hidden;
 	}
 
-	/* Scanline effect */
-	.monitor-screen::after {
-		content: " ";
-		display: block;
+	.sky-glow {
 		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-		z-index: 2;
-		background-size: 100% 2px, 3px 100%;
+		inset: 0;
+		background:
+			radial-gradient(circle at 75% 18%, rgba(162, 250, 255, 0.75), transparent 34%),
+			radial-gradient(circle at 16% 8%, rgba(255, 233, 125, 0.25), transparent 26%);
 		pointer-events: none;
 	}
 
-	.kicker {
-		color: #FF5252;
-		font-family: 'Courier New', monospace;
-		font-weight: bold;
-		letter-spacing: 0.2em;
-		font-size: 1.2rem;
-		margin-bottom: 0.5rem;
-		text-shadow: 0 0 5px #FF5252;
+	.hero-copy,
+	.hero-art {
+		position: relative;
+		z-index: 1;
+	}
+
+	.hero-copy {
+		background: #0b315e;
+		border: var(--b3);
+		border-radius: 18px;
+		box-shadow: var(--shadow-hard-sm);
+		padding: clamp(1rem, 2.4vw, 1.6rem);
+	}
+
+	.eyebrow {
+		margin: 0;
+		font-size: 0.85rem;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: #ffe779;
 	}
 
 	h1 {
-		font-size: clamp(2.5rem, 8vw, 5rem);
-		color: #9CCC65; /* Planet Express Green */
-		margin: 0.5rem 0;
-		line-height: 1;
-		text-shadow: 4px 4px 0 #000;
-		-webkit-text-stroke: 2px black;
+		margin: 0.55rem 0 0.85rem;
+		font-size: clamp(2rem, 6vw, 4rem);
+		line-height: 0.94;
+		letter-spacing: 0.03em;
+		color: #f1492a;
+		-webkit-text-stroke: 2px #ffe779;
+		text-shadow: 3px 3px 0 #0d7a72, 0 8px 16px rgba(0, 0, 0, 0.42);
+		font-family: Impact, 'League Spartan', sans-serif;
+		text-transform: uppercase;
 	}
 
 	.lede {
-		color: #CFD8DC;
-		font-size: 1.4rem;
-		max-width: 60ch;
-		margin: 1.5rem auto;
-		text-shadow: 1px 1px 0 #000;
+		margin: 0;
+		font-size: clamp(1rem, 1.8vw, 1.32rem);
+		color: #e6fbff;
+		max-width: 34ch;
+		text-shadow: 0 1px 0 rgba(0,0,0,0.35);
 	}
 
 	.cta-row {
 		display: flex;
-		gap: 1.5rem;
-		justify-content: center;
-		margin-top: 2.5rem;
-		position: relative;
-		z-index: 10;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		margin-top: 1.2rem;
 	}
 
-	.cta-primary, .cta-secondary {
-		padding: 1rem 2rem;
+	.cta {
+		display: inline-block;
+		padding: 0.78rem 1.2rem;
 		border-radius: 999px;
+		border: var(--b2);
+		background: #c2ecff;
+		color: #061526;
 		font-weight: 900;
 		text-transform: uppercase;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
-		transition: all 0.1s;
-		font-size: 1.1rem;
+		letter-spacing: 0.04em;
+		box-shadow: var(--shadow-hard-sm);
 	}
 
-	.cta-primary {
-		background: #FF5252;
+	.cta.primary {
+		background: var(--accent-red);
 		color: #fff;
 	}
 
-	.cta-primary:hover {
-		background: #D32F2F;
+	.cta:active {
 		transform: translate(2px, 2px);
-		box-shadow: 2px 2px 0 #000;
+		box-shadow: 1px 1px 0 #000;
 	}
 
-	.cta-secondary {
-		background: #CFD8DC;
-		color: #000;
+	.hero-art {
+		border: var(--b3);
+		border-radius: 18px;
+		background: #0f3e70;
+		position: relative;
+		min-height: 420px;
+		box-shadow: var(--shadow-hard-sm);
 	}
 
-	.cta-secondary:hover {
-		background: #B0BEC5;
-		transform: translate(2px, 2px);
-		box-shadow: 2px 2px 0 #000;
+	.hero-art img {
+		width: 100%;
+		height: 100%;
+		min-height: 420px;
+		object-fit: cover;
+		object-position: center;
+		border-radius: 14px;
+		border: 3px solid #041528;
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+	}
+
+	@media (max-width: 900px) {
+		.hero {
+			grid-template-columns: 1fr;
+			padding: 1rem;
+		}
+		.hero-copy {
+			padding: 1rem;
+		}
+		.hero-art,
+		.hero-art img {
+			min-height: 320px;
+		}
 	}
 </style>
