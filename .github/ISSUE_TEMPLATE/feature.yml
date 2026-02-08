@@ -1,0 +1,28 @@
+name: Feature request
+description: Propose a new capability
+labels: ["type:feature"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / goal
+      description: What are we trying to achieve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: Preferred implementation direction
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Bullet list of done conditions
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
